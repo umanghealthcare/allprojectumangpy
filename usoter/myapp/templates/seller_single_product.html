@@ -1,0 +1,100 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block contant %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+  </head>
+  <body>
+   
+    
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>product detalis</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if msg %}
+        <b style="color: red;">msg</b>
+    {% endif %}
+    
+    
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-8">
+                    <div class="product-content-right">
+                        <div class="product-breadcroumb">
+                            <a href="">Home</a>
+                            <a href="">{{product.product_company}}</a>
+                            <a href="">{{product.product_model}}</a>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="product-images">
+                                    <div class="product-main-img">
+                                        <img src="{{product.product_image.url}}" alt="">
+                                    </div>
+                                    
+                                   
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <div class="product-inner">
+                                    <h2 class="product-name">{{product.product_company}} {{product.product_model}}</h2>
+                                    <div class="product-inner-price">
+                                        <ins>Rs {{product.product_price}}</ins> 
+                                    </div>    
+                                    
+                                    
+                                        <a href="{% url 'seller_edit_product' pk=product.pk %}"><button class="add_to_cart_button" type="button">edit product</button>
+                                        
+                                        <a href="{% url 'seller_delete_product' pk=product.pk %}"><button class="add_to_cart_button" type="button">delete product</button>
+                
+                                    
+                                   
+                                    
+                                    <div role="tabpanel">
+                                        
+                                        <ul class="product-tab" role="tablist">
+                                            <li role="presentation" class="active">Description</a></li>
+                                                                          </ul>
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                                <h2>Product Description</h2>  
+                                                <p>{{product.product_desc}}</p>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="profile">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                                </div>                                    
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  </body>
+</html>
+{% endblock  %}

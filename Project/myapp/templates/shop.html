@@ -1,0 +1,45 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="margin-top: -30px;margin-bottom: -30px;">
+                    <div class="product-bit-title text-center">
+                        <h2>Shop</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                {% for i in products %}
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-shop-product">
+                        <div class="product-upper">
+                            <img src="{{i.product_image.url}}" alt="" style="width:250px;height: 250px">
+                        </div>
+                        <h2><a href="">{{i.product_company}} {{i.product_model}}</a></h2>
+                        <div class="product-carousel-price">
+                            <ins> Rs. {{i.product_price}}</ins>
+                        </div>  
+                        <div class="product-option-shop">
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="{% url 'single-product' pk=i.pk %}">Details</a>
+                        </div>                       
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
+{% endblock %}

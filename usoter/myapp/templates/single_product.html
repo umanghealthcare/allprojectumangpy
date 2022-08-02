@@ -1,0 +1,101 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block contant %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+  </head>
+  <body>
+   <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>product detalis</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if msg %}
+        <b style="color: red;">msg</b>
+    {% endif %}
+    
+    
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-8">
+                    <div class="product-content-right">
+                        <div class="product-breadcroumb">
+                            <a href="">Home</a>
+                            <a href="">{{product.product_company}}</a>
+                            <a href="">{{product.product_model}}</a>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="product-images">
+                                    <div class="product-main-img">
+                                        <img src="{{product.product_image.url}}" alt="">
+                                    </div>
+                                    
+                                   
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <div class="product-inner">
+                                    <h2 class="product-name">{{product.product_company}} {{product.product_model}}</h2>
+                                        
+                                    {% if wishlist_flag %}
+                                        <a href="{% url 'remove_form_wishlist' pk=product.pk %}"><button class="btn btn-danger" type="button">Remove from wishlist</button>
+                                    {% else  %}
+                                        <a href="{% url 'add_to_wishlist' pk=product.pk %}"><button class="add_to_cart_button" type="button">Add To wishlist</button>
+                                    {% endif %}
+                                    
+                                    
+                                         <a href="{% url 'add_to_cart' pk=product.pk%}"><button class="add_to_cart_button" type="button">Add to Cart</button>
+
+                
+                                    
+                                   
+                                    
+                                    <div role="tabpanel">
+                                        <ul class="product-tab" role="tablist">
+                                            <li role="presentation" class="active"><a href="" aria-controls='' role="tab" data-toggle="tab"> Description</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                                <h2>Product Description</h2>  
+                                                <p>{{product.product_desc}}</p>
+                                                <h2>Product Price</h2>  
+                                                <p>{{product.product_price}}</p>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="profile">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                                </div>                                    
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  </body>
+</html>
+{% endblock  %}

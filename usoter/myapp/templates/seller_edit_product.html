@@ -1,0 +1,96 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block contant %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single-sidebar">
+                        <h2 class="sidebar-title">edit product</h2>
+                        
+                    </div>
+                    <form enctype="multipart/form-data"
+                     action="{% url 'seller_edit_product' pk=product.pk %}" class="checkout" method="post" name="checkout">
+                                {% csrf_token %}
+                    <div class="single-sidebar">
+                        
+                {% if msg%}
+                    <b style='color: red;'>{{msg}}</b>
+                {% endif %}        
+                        <div class="thubmnail-recent">
+                                                
+                                              
+                                            
+                                         <p>
+                                                <label class="" for="billing_last_name">Product company <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" value="{{product.product_company}}" placeholder="" id="billing_last_name" name="product_company" class="input-text ">
+                                            </p>
+                                            <p>
+                                                <label class="" for="billing_last_name">product model <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" value="{{product.product_model}}" placeholder="" id="billing_last_name" name="product_model" class="input-text ">
+                                            </p>
+                                            <p>
+                                                <label class="" for="billing_last_name">product descriptions <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <textarea name="product_desc" rows="2" cols="32">{{product.product_desc}}</textarea>
+                                            </p>                      
+
+                                                <p id="billing_email_field" class="form-row form-row-first validate-required validate-email">
+                                                <label class="" for="billing_email">Product price<abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" value="{{product.product_price}}" placeholder="" id="billing_email" name="product_price" class="input-text ">
+                                            </p> 
+                                            
+                                                <p>
+                                                <label class="" for="billing_email"> curent product image<abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <img src="{{product.product_image.url}}">
+                                                
+                                            </p> 
+                                            <p>
+                                            <label class="" for="billing_email">profile image<abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="file" value=""  id="billing_last_name" name="product_image" >
+                                            </p> 
+
+                                        <div class="clear"></div>
+
+                                            </div>
+                                        </div>
+
+                                    
+                                        </div>
+                                    </div>
+
+                                        <div class="form-row place-order">
+
+                                            <input type="submit" data-value="Place order" value="submit" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+
+
+                                        </div>
+
+                                        <div class="clear"></div>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>                       
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  </body>
+</html>
+{% endblock %}

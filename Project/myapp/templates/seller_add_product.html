@@ -1,0 +1,93 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="margin-top: -30px;margin-bottom: -30px;">
+                    <div class="product-bit-title text-center">
+                        <h2>Add Product</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                            {% if msg %}
+                                <b style="color: red;">{{msg}}</b>
+                            {% endif %}
+                            <form enctype="multipart/form-data" action="{% url 'seller_add_product' %}" class="checkout" method="post" name="checkout">
+                                {% csrf_token %}
+                                <div id="customer_details" class="col2-set">
+                                    <div class="col-1">
+                                        <div class="woocommerce-billing-fields">
+                                            
+                                            
+                                            <p>
+                                                <label class="" for="billing_first_name">Product Company <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" placeholder="Product Company" name="product_company" id="billing_first_name" class="input-text ">
+                                            </p>
+                                            <p>
+                                                <label class="" for="billing_last_name">Product Model <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" placeholder="Product Model" name="product_model" id="billing_last_name" class="input-text ">
+                                            </p>
+                                            <p>
+                                            <div class="clear"></div>
+                                                <label class="" for="billing_email">Product Price <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" placeholder="Product Price" id="billing_email" name="product_price" class="input-text ">
+                                            </p>
+                                            <p>
+                                                <label class="" for="billing_phone">Product Image <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="file" id="billing_phone" name="product_image" class="input-text ">
+                                            </p>
+                                            <p>
+                                                <label class="" for="billing_phone">Product Description <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <textarea rows="5" cols="20" placeholder="Product Description" id="billing_phone" name="product_desc" class="input-text "></textarea>
+                                            </p>
+                                            
+                                            
+
+                                                <p>
+                                                <input type="submit" name="action" value="Add Product" class="input-submit">
+                                            </p>
+                                            <div class="clear"></div>
+
+
+                                            
+                                        </div>
+                                    </div>
+
+                                    
+
+                                </div>
+
+                            </form>
+
+                        </div>                       
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
+{% endblock %}

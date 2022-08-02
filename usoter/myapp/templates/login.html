@@ -1,0 +1,51 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block contant %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single-sidebar">
+                        <h2 class="sidebar-title">login</h2>
+                        
+                    </div>
+                    <form enctype="multipart/form-data" action="{% url 'login' %}" class="checkout" method="post" name="checkout">
+                      {% csrf_token %}
+                    <div class="single-sidebar">                     
+                {% if msg%}
+                    <b style='color: red;'>{{msg}}</b>
+                {% endif %}        
+                        <div class="thubmnail-recent">
+                                            
+                                            <p id="billing_email_field" class="form-row form-row-first validate-required validate-email">
+                                                <label class="" for="billing_email">Email<abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" placeholder="Email id" id="billing_email" name="email" class="input-text ">
+                                            </p> 
+                                            <p id="billing_email_field" class="form-row form-row-first validate-required validate-email">
+                                                <label class="" for="billing_email">Password <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="password" value="" placeholder="" id="billing_email" name="password" class="input-text ">
+                                            </p>  
+                                            <p>
+                                                <input type="submit" value="submit" id="place_order" name="action" class="input-submit">
+                                            </p>  
+                                            <div class="clear"></div>
+                        </div>
+                    </div> 
+                </div>
+             </form>
+            </div>
+        </div>                                
+    </div>
+</body>
+</html>
+{% endblock %}

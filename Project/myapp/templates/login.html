@@ -1,0 +1,87 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="margin-top: -30px;margin-bottom: -30px;">
+                    <div class="product-bit-title text-center">
+                        <h2>Login</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                            {% if msg %}
+                                <b style="color: red;">{{msg}}</b>
+                            {% endif %}
+                            <form enctype="multipart/form-data" action="{% url 'login' %}" class="checkout" method="post" name="checkout">
+                                {% csrf_token %}
+                                <div id="customer_details" class="col2-set">
+                                    <div class="col-1">
+                                        <div class="woocommerce-billing-fields">
+                                            <h3>Login</h3>
+                                                <label class="" for="billing_email">Email Address <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" placeholder="Email" id="email" name="email" class="input-text ">
+                                                <span id="email_error"></span>
+                                            </p>
+                                            <p id="billing_phone_field" class="form-row form-row-last validate-required validate-phone">
+                                                <label class="" for="billing_phone">Password <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="password" placeholder="Password" id="billing_phone" name="password" class="input-text ">
+                                            </p>
+                                                <p>
+                                                <input type="submit" name="action" value="Login" class="input-submit">
+                                            </p>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>                       
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+          $("#email").change(function(){
+            var email=$(this).val();
+
+            $.ajax({
+              url: '/ajax/validate_email/',
+              data: {
+                'email': email
+              },
+              dataType: 'json',
+              success: function (data) {
+                if (!data.is_taken) {
+                  document.getElementById("email").style.border="5px solid red";
+                  document.getElementById("email_error").innerHTML="This Email Id Not Registered";
+                }else{
+                  document.getElementById("email").style.border="5px solid green";
+                  document.getElementById("email_error").innerHTML="";
+                }
+              }
+            });
+          });
+
+        </script>
+  </body>
+</html>
+{% endblock %}
